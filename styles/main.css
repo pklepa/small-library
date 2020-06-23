@@ -1,0 +1,81 @@
+:root {
+    --background-color: #222831;
+    /* --background-color: #e7dfd5; */
+    --dark-color: #204051;
+    --standard-color: #3b6978;
+    --light-color: #fbc687;
+}
+
+#page-home {
+    min-height: 100vh;
+    min-width: 100vw;
+    background-color: var(--background-color);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+
+    font-family: 'Glegoo', serif;
+    color: var(--background-color);
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 80%;
+}
+
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    width: 300px;
+    height: 200px;
+    margin: 20px;
+
+    background-color: var(--light-color);
+    border-radius: 4px;
+    box-shadow: 0 0 20px 2px #000000c5;
+
+    position: relative;
+}
+
+.card h2 {
+    margin: 15px 10px 10px;
+
+    font-family: 'Cinzel', serif;
+    font-size: 24px;
+    font-weight: 400;
+    color: var(--background-color);
+}
+
+.card h3 {
+    color: var(--background-color);
+}
+
+.card h4 {
+    position: absolute;
+
+    bottom: 10px;
+}
+
+.card .checkbox {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
