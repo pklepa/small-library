@@ -151,6 +151,8 @@ main .add-book a {
     position: absolute;
     bottom: 14px;
     left: 15px;
+
+    cursor: pointer;
 }
 
 .card a:hover {
