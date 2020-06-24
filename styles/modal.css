@@ -1,0 +1,108 @@
+#modal {
+    background-color: #000000df;
+
+    height: 100vh;
+    width: 100vw;
+
+    position: fixed;
+    top: 0;
+    z-index: 2;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transition: 600ms;
+}
+
+#modal.hide {
+    display: none;
+}
+
+#modal .content {
+    color: white;
+
+    width: 420px;
+}
+
+#modal .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 48px;
+}
+
+#modal .header h1 {
+    color: white;
+
+    font-size: 26px;
+    font-weight: bold;
+    line-height: 30px;
+}
+
+#modal .header a {
+    background-image: url("../assets/x.svg");
+
+    width: 20px;
+    height: 20px;
+
+    transform: scale(1.2);
+
+    display: flex;
+
+    font-size: 0.01px;
+}
+
+.body {
+    display: flex;
+    flex-direction: column;
+
+    font-size: 18px;
+}
+
+.body label {
+    margin-bottom: 8px;
+}
+
+.body input {
+    margin-bottom: 20px;
+
+    font-family: Calibri;
+    font-size: 18px;
+
+    padding: 2px 8px;
+}
+
+.body .lower {
+    display: grid;
+    grid-template-areas: 
+        'lbPages lbRead'
+        'inPages inRead';
+    justify-content: space-between;
+    align-items: center;
+}
+
+.body .lower .label-pages { grid-area: lbPages; }
+.body .lower .input-pages { grid-area: inPages; }
+.body .lower .label-read { grid-area: lbRead; }
+.body .lower .input-read { grid-area: inRead; transform: scale(1.5); margin-left: 53px;}
+
+.body a#btn-add {
+    display: block;
+    width: 100%;
+    text-align: center;
+
+    margin-top: 20px;
+    padding: 8px;
+    border: 1px solid white;
+    border-radius: 8px;
+
+    font-weight: bold;
+
+    color: white;
+}
+
+.body a#btn-add:hover {
+    border-color: #fbc687;
+}

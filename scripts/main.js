@@ -1,10 +1,14 @@
 // - Global Variables
 const display = document.querySelector('h1');
+const modal = document.querySelector('#modal');
 
 // - Event Listeners
-document.querySelector('button').addEventListener('click', () => {
-    display.textContent = mybook.info();
+document.querySelector('#btn-add-form').addEventListener('click', () => {
+    console.log(mybook.info());
+    modal.classList.remove('hide');
 });
+
+document.querySelector('#modal #btn-close').addEventListener('click', () => modal.classList.add('hide'));
 
 
 // - Constructors
@@ -21,4 +25,3 @@ Book.prototype.info = function() { return `'${this.title}' by ${this.author} is 
 
 // - Script
 let mybook = new Book('Where the Wild Things Are', 'Armless John', 201);
-console.log(mybook)
