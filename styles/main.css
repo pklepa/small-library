@@ -16,11 +16,33 @@
     justify-content: center;
     align-items: center;
 
-    position: relative;
-
     font-family: 'Glegoo', serif;
     color: var(--background-color);
+
+    position: relative;
 }
+
+header {
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    
+    background-color: var(--background-color);
+    border-bottom: 2px solid var(--dark-color);
+}
+
+header h1{
+    font-family: 'Lobster Two', cursive;
+    font-size: 50px;
+    color: white;
+
+    line-height: 1.5em;
+}
+
 
 main {
     display: flex;
@@ -29,12 +51,43 @@ main {
     align-items: center;
 
     width: 80%;
+
+    margin: 120px 0;
+}
+
+main .add-book {
+    color: white;
+    font-size: 30px;
+
+    display: flex;
+    align-content: center;
+
+    margin-bottom: 30px;
+
+    height: 35px;
+}
+
+main .add-book:hover {
+    border-bottom: 2px dashed var(--light-color);
+}
+
+main .add-book span {
+    font-family: "Material Icons";
+
+    margin-right: 10px;
+
+    cursor: pointer;
+}
+
+main .add-book a {
+    color: white;
+    font-weight: bold;
 }
 
 .cards-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: center;
 }
 
 
@@ -71,11 +124,40 @@ main {
 .card h4 {
     position: absolute;
 
-    bottom: 10px;
+    bottom: 15px;
 }
 
 .card .checkbox {
     position: absolute;
-    bottom: 10px;
-    right: 10px;
+    bottom: 8px;
+    right: 15px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card .checkbox label {
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.card a {
+    font-family: "Material Icons";
+    font-size: 24px;
+    color: var(--background-color);
+    opacity: 40%;
+
+    position: absolute;
+    bottom: 14px;
+    left: 15px;
+}
+
+.card a:hover {
+    color: rgb(153, 33, 33);
+    opacity: 100%;
+}
+
+.card a:active {
+    color: var(--background-color);
 }
