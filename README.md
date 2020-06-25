@@ -12,3 +12,5 @@ The main objective of this project is to familiarize and apply the following:
 
 # more information
 Made as a solution for the Library Project in [The Odin Project](https://www.theodinproject.com/courses/javascript/lessons/library)
+
+[Web Local Storage API's Documentation](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API)
