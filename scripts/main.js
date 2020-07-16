@@ -70,8 +70,6 @@ function createBook(bookObj) {
 	// Important not to use innerHTML as it destroys the element and every event handlers from its children
 	cardsContainer.insertAdjacentHTML('beforeend', bookHTML);
 
-	console.log(book);
-
 	document
 		.querySelector(`#book${bookObj.id} a`)
 		.addEventListener('click', removeBook);
