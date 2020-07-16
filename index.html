@@ -1,74 +1,68 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Small Library</title>
+        <title>Small Library</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Glegoo:wght@400;700&family=Lobster+Two&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Glegoo:wght@400;700&family=Lobster+Two&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
+        <link rel="stylesheet" href="./styles/reset.css">
+        <link rel="stylesheet" href="./styles/main.css">
+        <link rel="stylesheet" href="./styles/modal.css">
+    </head>
 
-    <link rel="stylesheet" href="./styles/reset.css">
-    <link rel="stylesheet" href="./styles/main.css">
-    <link rel="stylesheet" href="./styles/modal.css">
-</head>
+    <body>
+        <div id="page-home">
 
-<body>
-    <div id="page-home">
+            <header>
+                <h1>Small Library</h1>
+            </header>
 
-        <header>
-            <h1>Small Library</h1>            
-        </header>
-
-
-        <main>
-            <div class="add-book" id="btn-add-form">
-                <span>add_circle</span>
-                <a href="#">Add a book</a>
-            </div>
-
-            <div class="cards-container"></div>
-            
-        </main>
-
-        <div class="hide" id="modal">
-            <div class="content">
-                <div class="header">
-                    <h1>Add a book</h1>
-                    <a href="#" id="btn-close">Close</a>
+            <main>
+                <div class="add-book" id="btn-add-form">
+                    <span>add_circle</span>
+                    <a href="#">Add a book</a>
                 </div>
-                <div class="body">
-                    <label for="title">Title</label>
-                    <input id="book-title" type="text" name="title" required>      
-                    
-                    <label for="author">Author</label>
-                    <input id="book-author" type="text" name="author">  
 
-                    <div class="lower">
-                        <label class="label-pages" for="pages"># of pages</label>
-                        <input class="input-pages" id="book-pages" type="number" name="pages">
+                <div class="cards-container"></div>
 
-                        <label class="label-read" for="read">Already read?</label>
-                        <input class="input-read" id="book-read" type="checkbox" name="read"> 
+            </main>
+
+            <div class="hide" id="modal">
+                <div class="content">
+                    <div class="header">
+                        <h1>Add a book</h1>
+                        <a href="#" id="btn-close">Close</a>
                     </div>
+                    <div class="body">
+                        <label for="title">Title *</label>
+                        <input id="book-title" type="text" name="title" required="required">
 
-                    <a href="#" id="btn-add">Add book</a>
-                       
+                        <label for="author">Author *</label>
+                        <input id="book-author" type="text" name="author" required="required">
+
+                        <div class="lower">
+                            <label class="label-pages" for="pages"># of pages</label>
+                            <input class="input-pages" id="book-pages" type="number" name="pages">
+
+                            <label class="label-read" for="read">Already read?</label>
+                            <input class="input-read" id="book-read" type="checkbox" name="read">
+                        </div>
+
+                        <a href="#" id="btn-add">Add book</a>
+
+                    </div>
                 </div>
             </div>
+
+            <footer></footer>
+
         </div>
 
-
-        <footer>
-        </footer>
-
-    </div>      
-
-
-    <script src="./scripts/main.js"></script>
-</body>
-
+        <script src="./scripts/main.js"></script>
+    </body>
 
 </html>

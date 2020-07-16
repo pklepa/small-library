@@ -1,165 +1,162 @@
 :root {
-    --background-color: #222831;
-    /* --background-color: #e7dfd5; */
-    --dark-color: #204051;
-    --standard-color: #3b6978;
-    --light-color: #fbc687;
+	--background-color: #222831;
+	--dark-color: #204051;
+	--standard-color: #3b6978;
+	--light-color: #fbc687;
 }
 
 #page-home {
-    min-height: 100vh;
-    min-width: 100vw;
-    background-color: var(--background-color);
+	min-height: 100vh;
+	min-width: 100vw;
+	background-color: var(--background-color);
 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 
-    font-family: 'Glegoo', serif;
-    color: var(--background-color);
+	font-family: 'Glegoo', serif;
+	color: var(--background-color);
 
-    position: relative;
+	position: relative;
 }
 
 header {
-    position: fixed;
-    top: 0;
-    z-index: 1;
-    width: 100%;
+	position: fixed;
+	top: 0;
+	z-index: 1;
+	width: 100%;
 
-    display: flex;
-    justify-content: center;
-    
-    background-color: var(--background-color);
-    border-bottom: 2px solid var(--dark-color);
+	display: flex;
+	justify-content: center;
+
+	background-color: var(--background-color);
+	border-bottom: 2px solid var(--dark-color);
 }
 
-header h1{
-    font-family: 'Lobster Two', cursive;
-    font-size: 50px;
-    color: white;
+header h1 {
+	font-family: 'Lobster Two', cursive;
+	font-size: 50px;
+	color: white;
 
-    line-height: 1.5em;
+	line-height: 1.5em;
 }
-
 
 main {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 
-    width: 80%;
+	width: 80%;
 
-    margin: 120px 0;
+	margin: 120px 0;
 }
 
 main .add-book {
-    color: white;
-    font-size: 30px;
+	color: white;
+	font-size: 30px;
 
-    display: flex;
-    align-content: center;
+	display: flex;
+	align-content: center;
 
-    margin-bottom: 30px;
+	margin-bottom: 30px;
 
-    height: 35px;
+	height: 35px;
 }
 
 main .add-book:hover {
-    border-bottom: 2px dashed var(--light-color);
+	border-bottom: 2px dashed var(--light-color);
 }
 
 main .add-book span {
-    font-family: "Material Icons";
+	font-family: 'Material Icons';
 
-    margin-right: 10px;
+	margin-right: 10px;
 
-    cursor: pointer;
+	cursor: pointer;
 }
 
 main .add-book a {
-    color: white;
-    font-weight: bold;
+	color: white;
+	font-weight: bold;
 }
 
 .cards-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
 }
 
-
 .card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
 
-    width: 300px;
-    height: 200px;
-    margin: 20px;
+	width: 300px;
+	height: 200px;
+	margin: 20px;
 
-    background-color: var(--light-color);
-    border-radius: 4px;
-    box-shadow: 0 0 20px 2px #000000c5;
+	background-color: var(--light-color);
+	border-radius: 4px;
+	box-shadow: 0 0 20px 2px #000000c5;
 
-    position: relative;
+	position: relative;
 }
 
 .card h2 {
-    margin: 15px 10px 10px;
+	margin: 15px 10px 10px;
 
-    font-family: 'Cinzel', serif;
-    font-size: 24px;
-    font-weight: 400;
-    color: var(--background-color);
+	font-family: 'Cinzel', serif;
+	font-size: 24px;
+	font-weight: 400;
+	color: var(--background-color);
 }
 
 .card h3 {
-    color: var(--background-color);
+	color: var(--background-color);
 }
 
 .card h4 {
-    position: absolute;
+	position: absolute;
 
-    bottom: 15px;
+	bottom: 15px;
 }
 
 .card .checkbox {
-    position: absolute;
-    bottom: 8px;
-    right: 15px;
+	position: absolute;
+	bottom: 8px;
+	right: 15px;
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 .card .checkbox label {
-    font-size: 14px;
-    margin-bottom: 5px;
+	font-size: 14px;
+	margin-bottom: 5px;
 }
 
 .card a {
-    font-family: "Material Icons";
-    font-size: 24px;
-    color: var(--background-color);
-    opacity: 40%;
+	font-family: 'Material Icons';
+	font-size: 24px;
+	color: var(--background-color);
+	opacity: 40%;
 
-    position: absolute;
-    bottom: 14px;
-    left: 15px;
+	position: absolute;
+	bottom: 14px;
+	left: 15px;
 
-    cursor: pointer;
+	cursor: pointer;
 }
 
 .card a:hover {
-    color: rgb(153, 33, 33);
-    opacity: 100%;
+	color: rgb(153, 33, 33);
+	opacity: 100%;
 }
 
 .card a:active {
-    color: var(--background-color);
+	color: var(--background-color);
 }

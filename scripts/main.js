@@ -11,46 +11,51 @@ const inputIsRead = document.querySelector('#book-read');
 let idEnum = 0;
 let bookLibrary = [];
 
-
 // ..:: Event Listeners
 // - Local Storage management
 window.addEventListener('load', fetchLibrary);
 window.addEventListener('unload', saveLibrary);
 
 // - Modal Handling
-document.querySelector('#btn-add-form').addEventListener('click', () => modal.classList.remove('hide'));
-document.querySelector('#modal #btn-close').addEventListener('click', () => modal.classList.add('hide'));
-document.querySelector('#modal #btn-add').addEventListener('click', addBook);
-
-
-
+document
+	.querySelector('#btn-add-form')
+	.addEventListener('click', () => modal.classList.remove('hide'));
+document
+	.querySelector('#modal #btn-close')
+	.addEventListener('click', () => modal.classList.add('hide'));
+document.querySelector('#modal #btn-add').addEventListener('click', () => {
+	if (validateInputs()) {
+		addBook();
+		clearInputs();
+	}
+});
 
 // ..:: Constructors
-function Book(title, author, pages, isRead){
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.isRead = isRead;
-    this.id = 'ID' + (++idEnum);
+function Book(title, author, pages, isRead) {
+	this.title = title;
+	this.author = author;
+	this.pages = pages;
+	this.isRead = isRead;
+	this.id = 'ID' + ++idEnum;
 }
-Book.prototype.info = function() { return `'${this.title}' by ${this.author} is ${this.pages} pages long.` };
-
-
-
+Book.prototype.info = function () {
+	return `'${this.title}' by ${this.author} is ${this.pages} pages long.`;
+};
 
 // ..:: Functions
-function addBook(){
-    let title = inputTitle.value;
-    let author = inputAuthor.value;
-    let pages = inputPages.value;
-    let isRead = inputIsRead.checked;
+function addBook() {
+	let title = inputTitle.value;
+	let author = inputAuthor.value;
+	let pages = inputPages.value;
+	let isRead = inputIsRead.checked;
+	console.log('isRead');
 
-    createBook(new Book(title, author, pages, isRead));
+	createBook(new Book(title, author, pages, isRead));
 }
 
 function createBook(bookObj) {
-    let bookHTML = `
-        <div class="card" data-bookId="${bookObj.id}">
+	let bookHTML = `
+        <div class="card newCard" id="book${bookObj.id}">
             <h2>${bookObj.title}</h2>
             <h3>${bookObj.author}</h3>
             <h4>${bookObj.pages} pages</h4>
@@ -62,66 +67,98 @@ function createBook(bookObj) {
         </div>
     `;
 
-    // Important not to use innerHTML as it destroys the element and every event handlers from its children
-    cardsContainer.insertAdjacentHTML('beforeend', bookHTML);
-    
-    document.querySelector(`.card[data-bookId=${bookObj.id}] a`).addEventListener('click', removeBook);
-    document.querySelector(`.card[data-bookId=${bookObj.id}] input[type="checkbox"]`).checked = bookObj.isRead;
-    document.querySelector(`.card[data-bookId=${bookObj.id}] input[type="checkbox"]`).addEventListener('click', changeReadStatus);
+	// Important not to use innerHTML as it destroys the element and every event handlers from its children
+	cardsContainer.insertAdjacentHTML('beforeend', bookHTML);
 
-    bookLibrary.push(bookObj);
+	console.log(book);
+
+	document
+		.querySelector(`#book${bookObj.id} a`)
+		.addEventListener('click', removeBook);
+	document.querySelector(`#book${bookObj.id} input[type="checkbox"]`).checked =
+		bookObj.isRead;
+	document
+		.querySelector(`#book${bookObj.id} input[type="checkbox"]`)
+		.addEventListener('click', changeReadStatus);
+
+	bookLibrary.push(bookObj);
 }
 
-
 function removeBook(e) {
-    let bookCard = e.target.parentNode;
-    
-    let bookIndexInLibrary = bookLibrary.findIndex((book) => book.id == bookCard.dataset.bookid);
-    bookLibrary.splice(bookIndexInLibrary, 1);
-    
-    cardsContainer.removeChild(bookCard);
+	let bookCard = e.target.parentNode;
+
+	let bookIndexInLibrary = bookLibrary.findIndex(
+		(book) => book.id == bookCard.dataset.bookid
+	);
+	bookLibrary.splice(bookIndexInLibrary, 1);
+
+	cardsContainer.removeChild(bookCard);
 }
 
 function changeReadStatus(e) {
-    let bookCard = e.target.parentNode.parentNode;
-    
-    let bookIndexInLibrary = bookLibrary.findIndex((book) => book.id == bookCard.dataset.bookid);
-    bookLibrary[bookIndexInLibrary].isRead = e.target.checked;
-}
+	let bookCard = e.target.parentNode.parentNode;
 
+	let bookIndexInLibrary = bookLibrary.findIndex(
+		(book) => bookCard.id.indexOf(book.id) != -1
+	);
+	console.log(bookLibrary);
+	console.log(bookIndexInLibrary);
+	bookLibrary[bookIndexInLibrary].isRead = e.target.checked;
+}
 
 // - Helper Functions
 function populateStorage() {
-    let bookOne = ['Budapeste', 'Chico Buarque de Holanda', 174, true];
-    let bookTwo = ['Will my cat eat my eyeballs?', 'Caitlin Doughty', 222, true];
-    let bookThree = ['The Time Machine', 'H.G. Wells', 118, true];
-    localStorage.setItem('book1', JSON.stringify(bookOne));
-    localStorage.setItem('book2', JSON.stringify(bookTwo));
-    localStorage.setItem('book3', JSON.stringify(bookThree));
+	let bookOne = ['Budapeste', 'Chico Buarque de Holanda', 174, true];
+	let bookTwo = ['Will my cat eat my eyeballs?', 'Caitlin Doughty', 222, true];
+	let bookThree = ['The Time Machine', 'H.G. Wells', 118, true];
+	localStorage.setItem('book1', JSON.stringify(bookOne));
+	localStorage.setItem('book2', JSON.stringify(bookTwo));
+	localStorage.setItem('book3', JSON.stringify(bookThree));
 }
 
-
 function fetchLibrary() {
-    // If it is the first time entering the site, creates a storage with predetermined books
-    if (!localStorage.getItem('book1')) populateStorage()
+	// If it is the first time entering the site, creates a storage with predetermined books
+	if (!localStorage.getItem('book1')) populateStorage();
 
-    for (let i = 1; i <= localStorage.length; i++) {
-        let bookArr = JSON.parse(localStorage.getItem(`book${i}`));
-        let book = new Book(bookArr[0], bookArr[1], bookArr[2], bookArr[3]);
-        createBook(book);
-    }
+	for (let i = 1; i <= localStorage.length; i++) {
+		let bookArr = JSON.parse(localStorage.getItem(`book${i}`));
+		let book = new Book(bookArr[0], bookArr[1], bookArr[2], bookArr[3]);
+		createBook(book);
+	}
 }
 
 function saveLibrary() {
-    localStorage.clear();
+	localStorage.clear();
 
-    let i = 1;
-    bookLibrary.forEach((book) => {
-        localStorage.setItem(`book${i}`, JSON.stringify(Object.values(book)));
-        i++;
-    });
+	let i = 1;
+	bookLibrary.forEach((book) => {
+		localStorage.setItem(`book${i}`, JSON.stringify(Object.values(book)));
+		i++;
+	});
 }
 
+function clearInputs() {
+	inputTitle.value = '';
+	inputTitle.classList.remove('required');
 
+	inputAuthor.value = '';
+	inputAuthor.classList.remove('required');
 
-// ..:: Script
+	inputPages.value = '';
+	inputIsRead.checked = false;
+}
+
+function validateInputs() {
+	let valid = true;
+	if (!inputTitle.checkValidity()) {
+		inputTitle.classList.add('required');
+		valid = false;
+	}
+
+	if (!inputAuthor.checkValidity()) {
+		inputAuthor.classList.add('required');
+		valid = false;
+	}
+
+	return valid;
+}
